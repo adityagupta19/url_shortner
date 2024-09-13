@@ -24,3 +24,10 @@ This project is a URL Shortener service built using **Go**, **GoFiber**, **Redis
 ```bash
 git clone https://github.com/adityagupta19/url_shortener.git
 cd url_shortener
+```
+
+### 2. Build and run the project with Docker
+
+```bash
+docker-compose up --build
+```
