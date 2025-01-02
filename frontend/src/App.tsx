@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   const [url, setUrl] = useState<string>("")
   const [response,setResponse] = useState<any>();
+  const [error,setError] = useState<any>();
 
   const apiEndpoint = "http://localhost:3000/api/v1"
 
@@ -19,8 +20,15 @@ function App() {
       "expiry":0 
     }
     console.log("api call is being made: ",request);
-    const res = await axios.post(apiEndpoint,request);
-    setResponse(res)
+    try{
+      const res = await axios.post(apiEndpoint,request);
+      console.log(res.data)
+      setResponse(res.data)
+    }catch(e:any){
+      console.log("Error: ")
+      console.log(e?.response.data);
+      setError(e?.response.data);
+    }
   }
 
   return (
@@ -37,7 +45,8 @@ function App() {
           onChange={handleChange}
         ></input>
         <button onClick={handleSubmit} color='#000000'> Shorten </button>
-        {response.short}
+        {response && response.short}
+        {error && alert(error.error)}
       </div>
       
     </>
