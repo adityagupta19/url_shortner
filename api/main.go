@@ -11,15 +11,15 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func setupRoutes(app *fiber.App){
-	app.Get("/:url",routes.ResolveURL)
-	app.Post("/api/v1",routes.ShortenURL)
+func setupRoutes(app *fiber.App) {
+	app.Get("/:url", routes.ResolveURL)
+	app.Post("/api/v1", routes.ShortenURL)
 }
 
-func main(){
+func main() {
 	err := godotenv.Load()
 
-	if err!= nil {
+	if err != nil {
 		fmt.Println(err)
 	}
 
